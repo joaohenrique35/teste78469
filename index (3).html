@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplos Adicionais de JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        #toggleText {
+            display: none;
+            margin: 10px 0;
+            color: #007BFF;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Exemplos Adicionais</h1>
+
+    <!-- Botão para exibir e ocultar texto -->
+    <button class="button" onclick="toggleText()">Mostrar/Ocultar Texto</button>
+    <p id="toggleText">Este texto pode ser exibido ou ocultado.</p>
+
+    <!-- Seção de Cálculo -->
+    <h3>Calculadora Simples</h3>
+    <input type="number" id="num1" placeholder="Número 1">
+    <input type="number" id="num2" placeholder="Número 2">
+    <button class="button" onclick="calculateSum()">Calcular Soma</button>
+    <p id="sumResult">Resultado: </p>
+
+    <!-- Manipulação de Lista -->
+    <h3>Lista de Itens</h3>
+    <input type="text" id="itemInput" placeholder="Adicionar item">
+    <button class="button" onclick="addItem()">Adicionar</button>
+    <ul id="itemList"></ul>
+</div>
+
+<script>
+    // Função para alternar visibilidade do texto
+    function toggleText() {
+        const text = document.getElementById("toggleText");
+        text.style.display = text.style.display === "none" ? "block" : "none";
+    }
+
+    // Função para calcular a soma de dois números
+    function calculateSum() {
+        const num1 = parseFloat(document.getElementById("num1").value);
+        const num2 = parseFloat(document.getElementById("num2").value);
+        const sum = num1 + num2;
+
+        // Exibir o resultado
+        document.getElementById("sumResult").innerText = "Resultado: " + (isNaN(sum) ? "Digite números válidos" : sum);
+    }
+
+    // Função para adicionar itens a uma lista
+    function addItem() {
+        const itemInput = document.getElementById("itemInput");
+        const itemText = itemInput.value;
+        
+        if (itemText) {
+            const itemList = document.getElementById("itemList");
+            const newItem = document.createElement("li");
+            newItem.innerText = itemText;
+            itemList.appendChild(newItem);
+            
+            // Limpar o campo de input
+            itemInput.value = "";
+        } else {
+            alert("Digite um item para adicionar!");
+        }
+    }
+</script>
+
+</body>
+</html>
